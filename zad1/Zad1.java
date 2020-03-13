@@ -14,6 +14,7 @@ class Zad1 {
 
     // Główna pętla programu
     public static void main(String[] args) {
+        //Tutaj z poziomu kodu podaje plik do otworzenia
         wczytajDane("z1data2.csv");
         ArrayList<Integer> posortowanaLista = cocktailSort();
         zapiszWyniki(posortowanaLista);
@@ -48,6 +49,8 @@ class Zad1 {
      * "odbija się" w jedną i drugą stronę.
      */
     public static ArrayList<Integer> cocktailSort() {
+        //temp od angielskiego temporary, ponieważ lista ta istnieje tylko na
+        //potrzeby tej funkcji tj. na potrzebę sortowania
         ArrayList<Integer> tempList = (ArrayList<Integer>) lista.clone();
 
         int przesuwacz = 0;
