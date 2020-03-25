@@ -1,1 +1,1 @@
-z2data11.csv - metoda: comb sort, liczebnosc: 200, liczba porownan: 3363, liczba zamian: 627
+z2data12.csv - metoda: comb sort, liczebnosc: 400, liczba porownan: 7106, liczba zamian: 1401

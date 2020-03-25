@@ -16,3 +16,31 @@ z2data32.csv - metoda: cocktail sort, liczebnosc: 400, liczba porownan: 399, lic
 z2data32.csv - metoda: comb sort,     liczebnosc: 400, liczba porownan: 6308, liczba zamian: 0
 z2data33.csv - metoda: cocktail sort, liczebnosc: 800, liczba porownan: 799, liczba zamian: 0
 z2data33.csv - metoda: comb sort,     liczebnosc: 800, liczba porownan: 14179, liczba zamian: 0
+
+Wnioski:
+1. Sam rozmiar zadanego zbioru wpływa na złożoność obliczeniową:
+    - algorytmu cocktail sort: rzędu O(n^2), czyli dla rozmiaru n średnio wykonane jest n^2 operacji
+    - algorytmu comb sort: ewidentnie wzrost liczby operacji w stosunku do liczebnosci zbioru
+        jest dużo mniejszy natomiast nie liniowy, stąd szacuje go na rząd O(nlog(n))
+2. Wpływ rodzaju danych wejściowych na złożoność obliczeniową:
+    - algorytmu cocktail sort:
+        I. Posortowane: złożoność rzędu O(n) wynosząca po prostu rozmiar zbioru-1 
+            (przy odpowiedniej implementacji)
+        II. Posortowane odwrotnie: przypadek najgorszy wynoszący dokładnie n^2,
+            czyli złożoność jest rzędu O(n^2)
+        III. Losowe: średnio rzędu O(n^2), bardzo zależne od samych danych
+    - algorytmu comb sort:
+        I. Posortowane: prezentuje się gorzej niż cocktail sort, rzędu O(nlog(n))
+        II. Posortowane odwrotnie: drastyczna poprawa w porównaniu do cocktail sort'a, ponieważ
+            duże dane trafiają na koniec praktycznie od razu (w porównaniu do setek zamian cocktail sort'a),
+            złożoność rzędu O(nlog(n)) i sama liczba operacji jest niewiele większa niż w przypadku
+            zbioru posortowanego
+        III. Losowe: również rzędu O(nlog(n)) jednak znacząco mniej operacji niż przy cocktail sorcie
+3. Dla odpowiednio dużych danych wejściowych (zakładam losowość) comb sort będzie zdecydowanie wydajniejszym
+algorytmem. By wykorzystać potencjał cocktail sort'a być może należałoby podzielić zbiór na mniejsze podzbiory,
+dokonać sortowania na każdym ze zbiorów naraz a na koniec złączyć je (wykorzystując odpowiednie instrukcje
+warunkowe oraz pętle). Dla danych uporządkowanych cocktail sort jest bardzo efektywny i jakikolwiek nowy
+element wrzucony do zbioru mógłby bardzo szybko trafić na odpowiednie miejsce. W przypadku comb sort'a 
+należałoby po prostu ustawić "rozstawienie grzebienia" na 1 wiedząc, że mamy do czynienia z uporządkowanymi danymi.
+Dla danych uporządkowanych odwrotnie comb sort działa bez zarzutu natomiast dla cocktail sort'a można by znowu
+zastosować technikę dzielenia na podzbiory.
