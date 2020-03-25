@@ -12,12 +12,21 @@ class Zad1 {
     // Oryginalna lista wczytywana z pliku .csv
     public static ArrayList<Integer> lista;
 
+    //Na potrzebę porównania różnych algorytmów sortowania:
+    public static int liczbaPorownan = 0;
+    public static int liczbaZamian = 0;
+
     // Główna pętla programu
     public static void main(String[] args) {
         //Tutaj z poziomu kodu podaje plik do otworzenia
-        wczytajDane("z1data2.csv");
-        ArrayList<Integer> posortowanaLista = cocktailSort();
-        zapiszWyniki(posortowanaLista);
+        String nazwaPliku = "z2data11.csv";
+        String pelnaSciezka = "zad1/data/" + nazwaPliku;
+        wczytajDane(pelnaSciezka);
+        //Należy ustawić na cocktailSort() lub Zad2.combSort() by wybrać algorytm
+        ArrayList<Integer> posortowanaLista = Zad2.combSort();
+        //W przypadku cocktailSort'a należy zmienić "comb sort" na "cocktail sort"
+        //oraz Zad2.liczbaPorownan na liczbaPorownan oraz Zad2.liczbaZamian na liczbaZamian
+        Zad2.zapiszWyniki(nazwaPliku, posortowanaLista, "comb sort", Zad2.liczbaPorownan, Zad2.liczbaZamian);
     }
 
     // Funkcja służąca do wczytania liczb z pliku .csv. Przyjmowany argument jest
@@ -54,20 +63,30 @@ class Zad1 {
         ArrayList<Integer> tempList = (ArrayList<Integer>) lista.clone();
 
         int przesuwacz = 0;
+        boolean czyKoniec = false;
         for (int i = 0; i <= tempList.size(); i++) {
+
+            czyKoniec = true;
+
             for (int j = 0; j <= tempList.size() - i - 2; j++) {
                 if (i % 2 == 0) {
+                    liczbaPorownan += 1;
                     if (tempList.get(przesuwacz) > tempList.get(przesuwacz + 1)) {
                         Integer tempInt = tempList.get(przesuwacz);
                         tempList.set(przesuwacz, tempList.get(przesuwacz + 1));
                         tempList.set(przesuwacz + 1, tempInt);
+                        liczbaZamian += 1;
+                        czyKoniec = false;
                     }
                     przesuwacz += 1;
                 } else {
+                    liczbaPorownan += 1;
                     if (tempList.get(przesuwacz) < tempList.get(przesuwacz - 1)) {
                         Integer tempInt = tempList.get(przesuwacz);
                         tempList.set(przesuwacz, tempList.get(przesuwacz - 1));
                         tempList.set(przesuwacz - 1, tempInt);
+                        liczbaZamian += 1;
+                        czyKoniec = false;
                     }
                     przesuwacz -= 1;
                 }
@@ -76,6 +95,10 @@ class Zad1 {
                 przesuwacz -= 1;
             } else {
                 przesuwacz += 1;
+            }
+            
+            if (czyKoniec) {
+                break;
             }
         }
         return tempList;
@@ -138,7 +161,7 @@ class Zad1 {
 
     // Funkcja zapisująca wyniki zadania do pliku 'wyniki.txt'.
     public static void zapiszWyniki(ArrayList<Integer> posortowanaLista) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("wyniki.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("zad1/wyniki.txt"))) {
             bw.write("Liczebnosc wynosi: " + liczebnoscZbioru(posortowanaLista));
             bw.newLine();
             bw.write("Minimum wynosi: " + minimalnyElement(posortowanaLista));
