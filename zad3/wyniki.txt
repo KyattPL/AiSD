@@ -1,0 +1,22 @@
+------------Sekwencyjne------------
+mars: 167,    porownan: 167
+ogilvy: 1170, porownan: 1170
+sky: 2212,    porownan: 2212
+meteor: 0,    porownan: 2218
+--------------Binarne--------------
+mars: 167,    porownan: 11
+ogilvy: 1170, porownan: 11
+sky: 2212,    porownan: 11
+meteor: 0,    porownan: 11
+(Pierwsza liczba informuje o pozycji w tekście)
+
+Na podstawie tych kilku kluczy można jasno wywnioskować, że wyszukiwanie binarne zapewnia znacznie mniejszą
+liczbę porównań wymaganych do odnalezienia danego elementu. Działanie samych algorytmów zapewnia złożoność
+obliczeniową rzędu O(n) w przypadku wyszukiwania sekwencyjnego oraz O(log2(n)) w przypadku wyszukiwania
+binarnego. Wraz ze wzrostem liczby słów w tekście tym samym będzie rosła różnica między sekwencyjnym
+a binarnym wyszukiwaniem. Istotnym elementem, o którym należy pamiętać jest fakt, że wyszukiwanie
+sekwencyjne jest w stanie pracować na dowolnym zbiorze wejściowym, natomiast do poprawnego działania 
+algorytmu binarnego wymagane jest wstępne posortowanie danych. Z tego też powodu część pamięci oraz czasu
+trzeba by przeznaczyć na sortowanie danych oraz hash'owanie samych słów. Idealnie dla wyszukiwania binarnego
+byłoby gdyby następne słowa dochodziły do zbioru danych co pewien odstęp czasu. Wtedy można by wykorzystać
+algorytm Insertion Sort by móc szybko dodać hash tego słowa do posortowanej tablicy.
