@@ -1,0 +1,26 @@
+choroby/kraje Polska         Francja        Hiszpania      Czechy         Szwecja        Ukraina        Chiny          Japonia        Australia      USA            SUMA           
+grypa         3676           7567           3003           1725           4161           8522           53436          4596           5876           40367          132929
+COVID19       6820           3838           3726           1239           5935           8631           52851          4347           4847           56028          148262
+polio         1811           4349           3495           1153           5698           5843           8909           2526           8321           39600          81705
+tyfus         1988           7645           4170           2687           3483           6201           77461          3352           1478           1107           109572
+cukrzyca      6139           8289           2817           621            3578           4147           9249           1729           8135           15190          59894
+udar          4681           4208           4464           2763           1616           8725           65330          3968           4800           84133          184688
+SUMA          25115          35896          21675          10188          24471          42069          267236         20518          33457          236425         717050
+
+choroby/kraje Polska         Francja        Hiszpania      Czechy         Szwecja        Ukraina        Chiny          Japonia        Australia      USA
+grypa         4655.9         6654.51        4018.18        1888.68        4536.51        7798.88        49541.06       3803.69        6202.36        43829.22
+COVID19       5192.94        7422.09        4481.67        2106.54        5059.79        8698.46        55255.48       4242.44        6917.79        48884.8
+polio         2861.75        4090.21        2469.78        1160.88        2788.37        4793.6         30450.48       2337.94        3812.29        26939.69
+tyfus         3837.81        5485.25        3312.14        1556.82        3739.4         6428.54        40836.18       3135.34        5112.55        36127.97
+cukrzyca      2097.81        2998.33        1810.48        850.99         2044.02        3513.95        22321.78       1713.83        2794.61        19748.19
+udar          6468.78        9245.6         5582.75        2624.09        6302.91        10835.56       68831.02       5284.75        8617.4         60895.14
+
+Chi kwadrat: 165297.45068336756
+Stopnie swobody: 45
+Prawdopodobienstwo p: 0.47198825103227016
+
+Wniosek:
+Prawdopodobieństwo p jest zbyt duże by móc stwierdzić, że liczba zgonów na wyróżnione choroby jest jednoznacznie powiązana z poszczególnymi krajami z zestawienia.
+Wartość p bardzo bliska 50% procent oznacza, iż istnieje duże szansa, że zależność jaką zaobserwowano w próbie mogła wystąpić przypadkowo
+(jeśli założono takową zależność). W praktyce często stosowany jest poziom istotności 5%, tzn. gdyby p < 0,05 to moglibyśmy przypuszczać, że założona hipoteza
+jest trafna (czyli istniałby związek między liczbą zgonów na wyróżnione choroby a konkretnymi państwami).
