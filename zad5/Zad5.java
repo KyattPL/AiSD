@@ -10,10 +10,10 @@ public class Zad5 {
     public static ArrayList<ArrayList<String>> macierz;
 
     public static void main(String[] args) {
-        wczytajPlik("z5data1.csv");
+        wczytajPlik("z5data2.csv");
         wypiszMacierz();
         Scanner scan = new Scanner(System.in);
-        System.out.println("Podaj miasto startowe: ");
+        System.out.print("Podaj miasto startowe: ");
         String start = scan.nextLine();
         scan.close();
         wyznaczTrase(start);
@@ -71,7 +71,6 @@ public class Zad5 {
 
             if (odwiedzoneMiasta.size() == macierz.size() - 1) {
                 odwiedzoneMiasta.add(returnIndex);
-                kolejnoscMiast.add(start);
                 kolejneOdleglosci.add(Integer.parseInt(macierz.get(index).get(returnIndex + 1)));
                 break;
             }
@@ -98,11 +97,18 @@ public class Zad5 {
         for (String miasto : kolejnoscMiast) {
             System.out.print(miasto + " ");
         }
-        System.out.println();
-
+        System.out.print(" [");
+        int suma = 0;
+        int licznik = macierz.size();
         for (Integer odleglosc : kolejneOdleglosci) {
-            System.out.print(odleglosc + " ");
+            System.out.print(odleglosc);
+            suma += odleglosc;
+            if (licznik != 1) {
+                System.out.print(" + ");
+            }
+            licznik -= 1;
         }
-        System.out.println();
+
+        System.out.println(" = " + suma + "]");
     }
 }
