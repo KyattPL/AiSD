@@ -1,0 +1,11 @@
+z5data1.csv (początek w mieście d):
+d c b e a f  [2 + 3 + 11 + 23 + 47 + 30 = 116]
+
+z5data2.csv (początek odpowiednio w miastach c, f, j, o):
+c a g d o f b n h i e j k l m  [251 + 218 + 164 + 339 + 118 + 100 + 535 + 254 + 89 + 217 + 233 + 362 + 58 + 184 + 283 = 3405]
+f b o d g a c m l k i h e j n  [100 + 202 + 339 + 164 + 218 + 251 + 283 + 184 + 58 + 225 + 89 + 144 + 233 + 505 + 445 = 3440]
+j e h i k l m c a g d o f b n  [233 + 144 + 89 + 225 + 58 + 184 + 283 + 251 + 218 + 164 + 339 + 118 + 100 + 535 + 505 = 3446]
+o f b d g a c m l k i h e j n  [118 + 100 + 379 + 164 + 218 + 251 + 283 + 184 + 58 + 225 + 89 + 144 + 233 + 505 + 427 = 3378]
+
+Wnioski:
+Strategia zachłanna zasadniczo sprowadza się do algorytmu przeszukiwania w głąb grafu (u nas pełnego ważonego). W związku z tym złożoność pamięciowa jest stosunkowo mała gdyż wystarczy tak naprawdę trzymać tylko ścieżkę. Złożoność czasowa rośnie liniowo wraz ze wzrostem liczby miast. Same wyniki wydają się optymalne zważywszy na to z jak skomplikowanym problemem mamy do czynienia. Istnieje tak duża liczba kombinacji ścieżek, że ciężko jest znaleźć prosty algorytm zwracający bardzo krótkie ścieżki. Na pewno strategia zachłanna nie sprowadza się do najoptymalniejszej trasy natomiast w przystępnym czasie i z zadowalającym zużyciem pamięci potrafi jakąkolwiek wyznaczyć.
