@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
+//import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 public class Zad6 {
@@ -37,6 +38,7 @@ public class Zad6 {
 
             if (iteracje % podzialIteracji == 0) {
                 System.out.println("Iteracja: " + iteracje);
+                System.out.println("MFC: " + mfc);
                 najlepsze5(populacja, mfc);
                 System.out.println();
             }
@@ -162,41 +164,47 @@ public class Zad6 {
         for (ArrayList<Integer> osobnik : osobniki) {
             suma += FC(osobnik);
         }
-        return suma;
+        return suma / P;
     }
 
     public static ArrayList<ArrayList<Integer>> klonowanie(ArrayList<ArrayList<Integer>> osobniki, int MFC) {
-        ArrayList<Integer> mfcWszystkich = new ArrayList<Integer>();
+        ArrayList<Double> mfcWszystkich = new ArrayList<Double>();
         int suma = 0;
         int index = 0;
         for (ArrayList<Integer> osobnik : osobniki) {
-            mfcWszystkich.add((int) Math.round((double) MFC / (double) FC(osobnik)));
+            mfcWszystkich.add((double) MFC / (double) FC(osobnik));
         }
         int[] indeksy = IntStream.range(0, mfcWszystkich.size()).boxed()
-                .sorted((i, j) -> mfcWszystkich.get(j) - mfcWszystkich.get(i)).mapToInt(ele -> ele).toArray();
-        index = 0;
+                .sorted((i, j) -> (int) Math.signum(mfcWszystkich.get(j) - mfcWszystkich.get(i))).mapToInt(ele -> ele)
+                .toArray();
+
         while (suma < (P - R)) {
-            suma += mfcWszystkich.get(indeksy[index]);
+            suma += (int) Math.round(mfcWszystkich.get(indeksy[index]));
             index += 1;
         }
         index -= 1;
-        int ileOstatniemu = mfcWszystkich.get(indeksy[index]);
+        int ileOstatniemu = (int) Math.round(mfcWszystkich.get(indeksy[index]));
         if (suma > (P - R)) {
             int ileOdjac = suma - (P - R);
             suma -= ileOdjac;
-            mfcWszystkich.set(indeksy[index], ileOstatniemu - ileOdjac);
+            mfcWszystkich.set(indeksy[index], (double) (ileOstatniemu - ileOdjac));
         }
         ArrayList<ArrayList<Integer>> nowePokolenie = new ArrayList<ArrayList<Integer>>();
         int stopIndex = 0;
         while (stopIndex <= index) {
             int nrOsobnika = indeksy[stopIndex];
-            int ileKlonow = mfcWszystkich.get(indeksy[stopIndex]);
+            int ileKlonow = (int) Math.round(mfcWszystkich.get(indeksy[stopIndex]));
             while (ileKlonow != 0) {
                 nowePokolenie.add(mutujOsobnika(osobniki.get(nrOsobnika)));
                 ileKlonow -= 1;
             }
             stopIndex += 1;
         }
+        for (ArrayList<Integer> osobnik : nowePokolenie) {
+            // wypiszOsobnika(osobnik);
+        }
+        // System.out.println();
+
         return nowePokolenie;
     }
 
